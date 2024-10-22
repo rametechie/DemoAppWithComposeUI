@@ -7,11 +7,15 @@ import androidx.lifecycle.viewModelScope
 import com.example.barchart.data.githubreposlist.repository.GithubListRepositoryImpl
 import com.example.barchart.presentation.githubreposlist.mapper.mapDomainToPresentationReposList
 import com.example.barchart.presentation.githubreposlist.model.GithubListUIModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
 //hilt
-class GithubListViewModel : ViewModel() {
+@HiltViewModel
+class GithubListViewModel @Inject constructor(
+) : ViewModel() {
 
     private var _reposList: MutableLiveData<List<GithubListUIModel>> = MutableLiveData()
     val reposList: LiveData<List<GithubListUIModel>> = _reposList

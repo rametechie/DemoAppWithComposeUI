@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -15,11 +16,13 @@ import androidx.compose.ui.Modifier
 import com.example.barchart.presentation.githubreposlist.model.GithubListUIModel
 import com.example.barchart.presentation.githubreposlist.viewmodel.GithubListViewModel
 import com.example.barchart.presentation.widget.theme.BarChartTheme
+import dagger.hilt.android.AndroidEntryPoint
 
 //hilt
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    private val viewModel: GithubListViewModel by lazy { GithubListViewModel() }
+    private val viewModel: GithubListViewModel by viewModels()
 
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
