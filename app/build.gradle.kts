@@ -3,8 +3,8 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("kotlinx-serialization")
-        id("kotlin-kapt")
-        id("com.google.dagger.hilt.android")
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -79,9 +79,12 @@ dependencies {
     implementation(libs.coil.compose)
 
     //Hilt
-    implementation("com.google.dagger:hilt-android:2.51.1")
-    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
 
+    //navigation
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.hilt.navigation.compose)
 
 }
 
