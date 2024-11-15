@@ -5,6 +5,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.barchart.presentation.githubreposlist.model.GithubListUIModel
 import com.example.barchart.presentation.githubreposlist.view.screens.DetailScreen
 import com.example.barchart.presentation.githubreposlist.view.screens.RepoListView
 import com.example.barchart.presentation.githubreposlist.viewmodel.GithubListViewModel
@@ -20,13 +21,25 @@ fun AppNavigator() {
         startDestination = "List"
     ) {
         composable (route = "List") {
+
           RepoListView(viewModel = hiltViewModel<GithubListViewModel>(),
-              navController = navController
+              navigateToDetail = { data ->
+                  // Pass the github object as a Parcelable
+                  navController.currentBackStackEntry?.savedStateHandle?.set("data", data)
+                  navController.navigate("Detail")
+              }
           )
         }
 
         composable (route = "Detail") {
-            DetailScreen()
+            val gitHubObject = navController.previousBackStackEntry?.savedStateHandle?.get<GithubListUIModel>("data")
+
+            gitHubObject?.let { it1 ->
+                DetailScreen(
+                    navController = navController,
+                    it1
+                )
+            }
         }
     }
 }

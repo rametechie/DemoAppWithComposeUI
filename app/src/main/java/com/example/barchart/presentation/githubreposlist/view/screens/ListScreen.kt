@@ -9,12 +9,11 @@ import androidx.navigation.NavController
 import com.example.barchart.presentation.githubreposlist.model.GithubListUIModel
 import com.example.barchart.presentation.githubreposlist.view.GitHubListItem
 import com.example.barchart.presentation.githubreposlist.viewmodel.GithubListViewModel
-import javax.inject.Inject
 
 @Composable
 fun RepoListView (
     viewModel: GithubListViewModel,
-    navController: NavController
+    navigateToDetail: (GithubListUIModel) -> Unit
 ) {
     LaunchedEffect(Unit) {
         viewModel.fetchReposList()
@@ -30,11 +29,9 @@ fun RepoListView (
             items(repos) {
                 //replace with detailed ui
                 GitHubListItem(it) {
-                    println("panda: clicked item: $it")
-
-                    navController.navigate("Detail")
+                    println("panda: clicked item: ${it}")
+                    navigateToDetail(it)
                 }
-
             }
         }
     }
