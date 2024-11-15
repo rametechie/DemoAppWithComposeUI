@@ -5,9 +5,10 @@ import com.example.barchart.data.githubreposlist.mapper.mapDataToDomainReposList
 import com.example.barchart.data.githubreposlist.service.GithubListService
 import com.example.barchart.domain.githubreposlist.model.GitHubListRepos
 import com.example.barchart.domain.githubreposlist.repository.GithubListRepository
+import javax.inject.Inject
 
-//hilt
-class GithubListRepositoryImpl: GithubListRepository {
+
+class GithubListRepositoryImpl @Inject constructor(): GithubListRepository {
 
     override suspend fun fetchReposList(): List<GitHubListRepos> {
         val apiService = GithubListService(httpClientAndroid)
