@@ -39,7 +39,7 @@ fun GitHubListItem(
             NetworkImage(
                 modifier = Modifier.size(80.dp),
                 url = item.avatar,
-                contentScale = ContentScale.Crop
+                contentScale = ContentScale.Crop,
             )
 
             Text(text = item.repoName)
