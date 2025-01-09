@@ -36,7 +36,6 @@ fun AppNavigator() {
 
             gitHubObject?.let { it1 ->
                 DetailScreen(
-                    navController = navController,
                     it1
                 )
             }

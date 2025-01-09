@@ -3,7 +3,7 @@ package com.example.barchart.presentation.githubreposlist.mapper
 import com.example.barchart.presentation.githubreposlist.model.GithubListUIModel
 import com.example.barchart.domain.githubreposlist.model.GitHubListRepos as DomainGitHubListRepos
 
-fun mapDomainToPresentationReposList(response: List<DomainGitHubListRepos>): List<GithubListUIModel> {
+fun mapDomainToPresentationReposList(response: List<DomainGitHubListRepos>): MutableList<GithubListUIModel> {
     val repoList = mutableListOf<GithubListUIModel>()
     response.forEach { domainModel ->
         repoList.add(

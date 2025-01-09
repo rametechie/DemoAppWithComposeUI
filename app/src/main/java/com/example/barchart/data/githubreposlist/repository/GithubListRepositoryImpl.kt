@@ -5,16 +5,22 @@ import com.example.barchart.data.githubreposlist.mapper.mapDataToDomainReposList
 import com.example.barchart.data.githubreposlist.service.GithubListService
 import com.example.barchart.domain.githubreposlist.model.GitHubListRepos
 import com.example.barchart.domain.githubreposlist.repository.GithubListRepository
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 
 class GithubListRepositoryImpl @Inject constructor(): GithubListRepository {
 
-    override suspend fun fetchReposList(): List<GitHubListRepos> {
-        val apiService = GithubListService(httpClientAndroid)
-        val response = apiService.getRepos()
+  //  emit(mapDomainToPresentationReposList(result))
 
-        //map to the domain model
-        return mapDataToDomainReposList(response)
-    }
+    override suspend fun fetchReposList() =
+        flow {
+            val apiService = GithubListService(httpClientAndroid)
+            val response = apiService.getRepos()
+
+            //map to the domain model
+            emit(mapDataToDomainReposList(response))
+        }
+
+
 }
