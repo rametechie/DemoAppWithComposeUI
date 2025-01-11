@@ -16,3 +16,4 @@ fun mapDataToDomainReposList(response: List<GitHubListRepos>): List<DomainGitHub
     }
     return repoList
 }
+
