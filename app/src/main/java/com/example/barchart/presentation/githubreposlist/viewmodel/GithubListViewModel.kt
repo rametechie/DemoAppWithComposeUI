@@ -19,7 +19,7 @@ class GithubListViewModel @Inject constructor(
 ) : ViewModel() {
 
     //hot flow
-    internal var uiState: StateFlow<HomeUiState> = MutableStateFlow(HomeUiState(emptyList()))
+    internal var uiState: MutableStateFlow<List<GithubListUIModel>> = MutableStateFlow(emptyList())
 
     fun fetchReposList() =
         viewModelScope.launch {

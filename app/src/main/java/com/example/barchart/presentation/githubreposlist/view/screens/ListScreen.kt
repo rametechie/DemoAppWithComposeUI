@@ -18,13 +18,14 @@ fun RepoListView (
         viewModel.fetchReposList()
     }
 
+    println("ramesh: values of each item: clicked item:  ")
     // State
     val repoListState = viewModel.uiState.collectAsStateWithLifecycle()
 
-
+    println("ramesh: values of each item: clicked item: ${repoListState.value }")
     // UI
-    if (repoListState.value.data != null) {
-        val repos = repoListState.value.data as List<GithubListUIModel>
+    if (repoListState.value != null) {
+        val repos = repoListState.value
         LazyColumn {
             items(repos) {
                 //replace with detailed ui
