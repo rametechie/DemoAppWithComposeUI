@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 //hilt
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-
+//first jenkins build
     private val viewModel: GithubListViewModel by viewModels()
 
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
